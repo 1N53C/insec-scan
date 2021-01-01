@@ -12,9 +12,9 @@ _target = ""
 inp = True
 
 def create_folder():
-    folder_create = input("[?] Should I create a folder for you to save the outout? (y/n)")
+    folder_create = input(Fore.GREEN + "[?] Should I create a folder for you to save the outout? (y/n)")
     if folder_create == "y" or folder_create == "Y":
-        folder_name = input("[!] Please enter the name of the folder and I will create it for you: ")
+        folder_name = input(Fore.GREEN + "[!] Please enter the name of the folder and I will create it for you: ")
         os.system("mkdir " + folder_name)
         print(Fore.GREEN + "[+] Folder with the name " + folder_name + " created!\n")
         return str(folder_name)
@@ -37,7 +37,7 @@ def dirb(_target, folder_name, ssl):
 
 
 def check_ssl():
-    ssl = input(Fore.RED + "Run against SSL? (y/n): ")
+    ssl = input(Fore.GREEN + "[?] Run against SSL? (y/n): ")
     return str(ssl)
 
 
