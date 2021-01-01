@@ -26,12 +26,12 @@ def nmap(_target, folder_name):
     os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + _target + " " + _target)
 
 
-def dirb(_target):
+def dirb(_target, folder_name):
     file_location = dict_file()
     ssl = input(Fore.RED + "Run against SSL? (y/n): ")
     if ssl == "y" or ssl == "Y":
         print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
-        os.system("dirb https://" + _target + " " + file_location)
+        os.system("dirb https://" + _target + " " + file_location > dirb/ + folder_name)
     elif ssl == "n" or ssl == "N":
         print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
         os.system("dirb http://" + _target + " " + file_location)
@@ -73,7 +73,7 @@ def main():
             nmap(_target, folder_name)
             inp = False
         elif inp == "2":
-            dirb(_target)
+            dirb(_target, folder_name)
             inp = False
         elif inp == "3":
             print("NIKTO")
