@@ -5,10 +5,13 @@ from colorama import Fore, Style, init
 
 init(autoreset=True)
 
-_target = ""
+# Gobals
+target = ""
 inp = True
 
+# Helper Functions
 
+# Create a folder for the output if needed
 def create_folder():
     folder_create = input(Fore.GREEN + "[?] Should I create a folder for you to save the outout? (y/n)")
     if folder_create == "y" or folder_create == "Y":
@@ -19,40 +22,9 @@ def create_folder():
     else:
         print(Fore.RED + "[-] No folder created\n")
 
-
-def nmap(_target, folder_name):
-    print(Fore.RED + "nmap -sC -sV " + _target)
-    if folder_name:
-        os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + _target + " " + _target)
-    else:
-        os.system("nmap -sC -sV -o " + "nmap_" + _target + " " + _target)
-
-
-def dirb(_target, folder_name, ssl):
-    file_location = dict_file()
-    if folder_name:
-        if ssl == "y" or ssl == "Y":
-            print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
-            os.system("dirb https://" + _target + " " + file_location + "> " + folder_name + "/dirb_" + _target)
-        elif ssl == "n" or ssl == "N":
-            print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
-            os.system("dirb http://" + _target + " " + file_location + "> " + folder_name + "/dirb_" + _target)
-    else:
-        if ssl == "y" or ssl == "Y":
-            print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
-            os.system("dirb https://" + _target + " " + file_location + "> " + "dirb_" + _target)
-        elif ssl == "n" or ssl == "N":
-            print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
-            os.system("dirb http://" + _target + " " + file_location)
-
-
 def check_ssl():
     ssl = input(Fore.GREEN + "[?] Run against SSL? (y/n): ")
     return str(ssl)
-
-
-def nikto(_target, folder_name):
-    exit()
 
 
 def dict_file():
@@ -60,6 +32,40 @@ def dict_file():
         Fore.RED + "Please add path to dictionary file (Example: /usr/share/wordlists/dirb/common.txt ")
     return str(file_location)
 
+# System Functions
+
+def nmap(target, folder_name):
+    print(Fore.RED + "nmap -sC -sV " + target)
+    if folder_name:
+        os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + target + " " + target)
+    else:
+        os.system("nmap -sC -sV -o " + "nmap_" + target + " " + target)
+
+
+def dirb(target, folder_name, ssl):
+    file_location = dict_file()
+    if folder_name:
+        if ssl == "y" or ssl == "Y":
+            print(Fore.GREEN + "Running dirb https://" + target + " " + file_location)
+            os.system("dirb https://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
+        elif ssl == "n" or ssl == "N":
+            print(Fore.GREEN + "Running dirb http://" + target + " " + file_location)
+            os.system("dirb http://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
+    else:
+        if ssl == "y" or ssl == "Y":
+            print(Fore.GREEN + "Running dirb https://" + target + " " + file_location)
+            os.system("dirb https://" + target + " " + file_location + "> " + "dirb_" + target)
+        elif ssl == "n" or ssl == "N":
+            print(Fore.GREEN + "Running dirb http://" + target + " " + file_location)
+            os.system("dirb http://" + target + " " + file_location)
+
+
+
+def nikto(target, folder_name):
+    exit()
+
+
+# Main Function
 
 def main():
     global inp
@@ -81,7 +87,7 @@ def main():
                     Fore.BLUE + "_______________________________________________________________________________________________")
 
         # Define Target
-        _target = input(Fore.GREEN + "[!] Enter Target IP: ")
+        target = input(Fore.GREEN + "[!] Enter Target IP: ")
         ssl = check_ssl()
 
         folder_name = create_folder()
@@ -98,18 +104,18 @@ def main():
         inp = input(Fore.GREEN + "[!] Enter the number of selection (1,2,3,4,5): ")
 
         if inp == "1":
-            nmap(_target, folder_name)
+            nmap(target, folder_name)
             inp = False
         elif inp == "2":
-            dirb(_target, folder_name, ssl)
+            dirb(target, folder_name, ssl)
             inp = False
         elif inp == "3":
-            nikto(_target, folder_name)
+            nikto(target, folder_name)
             inp = False
         elif inp == "4":
-            nmap(_target, folder_name)
-            dirb(_target, folder_name, ssl)
-            nikto(_target, folder_name)
+            nmap(target, folder_name)
+            dirb(target, folder_name, ssl)
+            nikto(target, folder_name)
             inp = False
         elif inp == "5":
             print("EXIT")
