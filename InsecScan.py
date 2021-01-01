@@ -66,10 +66,10 @@ def dirb(target, folder_name, ssl):
 def nikto(target, folder_name):
     if folder_name:
         print(Fore.GREEN + "Running nikto")
-        os.system("nikto -h " + target + " --output " + folder_name + "/nikto_" + target)
+        os.system("nikto -h " + target + " --output " + folder_name + "/nikto_" + target + ".txt")
     else:
         print(Fore.GREEN + "Running nikto")
-        os.system("nikto -h " + target + " --output nikto_" + target)
+        os.system("nikto -h " + target + " --output nikto_" + target + ".txt")
 
 
 # Main Function
