@@ -13,17 +13,17 @@ inp = True
 
 def create_folder():
     folder_create = input("[?] Should I create a folder for you to save the outout? (y/n)")
-    print(folder_create)
     if folder_create == "y" or folder_create == "Y":
         folder_name = input("[!] Please enter the name of the folder and I will create it for you: ")
         os.system("mkdir " + folder_name)
         print(Fore.GREEN + "[+] Folder with the name " + folder_name + " created!")
+        return str(folder_name)
     else:
         print(Fore.MAGENTA + "[-] No folder created")
 
-def nmap(_target):
+def nmap(_target, folder_name):
     print(Fore.RED + "nmap -sC -sV " + _target)
-    os.system("nmap -sC -sV -o nmap_" + _target + " " + _target)
+    os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + _target + " " + _target)
 
 
 def dirb(_target):
@@ -39,7 +39,7 @@ def dirb(_target):
 def main():
     global inp
     while inp:
-        print(Fore.BLUE + "_______________________________________________________________________________________________")
+        print(Fore.BLUE + "_________________________________rm .rf______________________________________________________________")
         print(Fore.BLUE + ".___ _______    _____________________________     __________________     _____    _______ ")
         print(Fore.BLUE + "|   |\      \  /   _____/\_   _____/\_   ___ \   /   _____/\_   ___ \   /  _  \   \      \\")
         print(Fore.BLUE + "|   |/   |   \ \_____  \  |    __)_ /    \  \/   \_____  \ /    \  \/  /  /_\  \  /   |   \\")
@@ -52,7 +52,7 @@ def main():
         # Define Target
         _target = input(Fore.GREEN + "[!] Enter Target IP: ")
 
-        create_folder()
+        folder_name = create_folder()
 
         print(Fore.RED + "Choose your Weapon...")
         print(Fore.YELLOW + "=================================")
@@ -65,7 +65,7 @@ def main():
         inp = input(Fore.GREEN + "[!] Enter the number of selection (1,2,3,4,5): ")
 
         if inp == "1":
-            nmap(_target)
+            nmap(_target, folder_name)
             inp = False
         elif inp == "2":
             dirb(_target)
