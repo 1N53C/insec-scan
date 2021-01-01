@@ -27,13 +27,18 @@ def nmap(_target, folder_name):
 
 
 def dirb(_target):
+    file_location = dict_file()
     ssl = input(Fore.RED + "Run against SSL? (y/n): ")
     if ssl == "y" or ssl == "Y":
-        print(Fore.GREEN + "Running dirb https://" + _target)
-        os.system("dirb https://" + _target)
+        print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
+        os.system("dirb https://" + _target + " " + file_location)
     elif ssl == "n" or ssl == "N":
-        print(Fore.GREEN + "Running dirb http://" + _target)
-        os.system("dirb http://" + _target)
+        print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
+        os.system("dirb http://" + _target + " " + file_location)
+
+def dict_file():
+    file_location = input(Fore.RED + "Please add path to dictionary file (Example: /usr/share/wordlists/dirb/common.txt " )
+    return str(file_location)
 
 
 def main():
