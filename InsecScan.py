@@ -16,7 +16,7 @@ def create_folder():
     if folder_create == "y" or folder_create == "Y":
         folder_name = input("[!] Please enter the name of the folder and I will create it for you: ")
         os.system("mkdir " + folder_name)
-        print(Fore.GREEN + "[+] Folder with the name " + folder_name + " created!")
+        print(Fore.GREEN + "[+] Folder with the name " + folder_name + " created!\n")
         return str(folder_name)
     else:
         print(Fore.MAGENTA + "[-] No folder created")
@@ -66,7 +66,8 @@ def main():
         print(Fore.YELLOW + "3. NIKTO")
         print(Fore.YELLOW + "4. Let´s run them ALL")
         print(Fore.YELLOW + "5. EXIT")
-        print(Fore.YELLOW + "=================================")
+        print(Fore.YELLOW + "=================================\n")
+
         inp = input(Fore.GREEN + "[!] Enter the number of selection (1,2,3,4,5): ")
 
         if inp == "1":
