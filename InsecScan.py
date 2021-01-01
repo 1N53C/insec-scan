@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import os
-from colorama import Fore, Style, init
+from colorama import Fore, init
 
 init(autoreset=True)
 
@@ -9,11 +9,12 @@ init(autoreset=True)
 target = ""
 inp = True
 
+
 # Helper Functions
 
 # Create a folder for the output if needed
 def create_folder():
-    folder_create = input(Fore.GREEN + "[?] Should I create a folder for you to save the outout? (y/n)")
+    folder_create = input(Fore.GREEN + "[?] Should I create a folder for you to save the outout? (y/n) ")
     if folder_create == "y" or folder_create == "Y":
         folder_name = input(Fore.GREEN + "[!] Please enter the name of the folder and I will create it for you: ")
         os.system("sudo mkdir " + folder_name)
@@ -21,6 +22,7 @@ def create_folder():
         return str(folder_name)
     else:
         print(Fore.RED + "[-] No folder created\n")
+
 
 def check_ssl():
     ssl = input(Fore.GREEN + "[?] Run against SSL? (y/n): ")
@@ -31,6 +33,7 @@ def dict_file():
     file_location = input(
         Fore.RED + "Please add path to dictionary file (Example: /usr/share/wordlists/dirb/common.txt ")
     return str(file_location)
+
 
 # System Functions
 
@@ -60,9 +63,13 @@ def dirb(target, folder_name, ssl):
             os.system("dirb http://" + target + " " + file_location)
 
 
-
 def nikto(target, folder_name):
-    exit()
+    if folder_name:
+        print(Fore.GREEN + "Running nikto")
+        os.system("nikto " + target + "--output " + folder_name + "/nikto_" + target)
+    else:
+        print(Fore.GREEN + "Running nikto")
+        os.system("nikto " + target + "--output nikto" + target)
 
 
 # Main Function
@@ -71,20 +78,20 @@ def main():
     global inp
     while inp:
         print(
-                    Fore.BLUE + "______________________________________________________________________________________________")
+                Fore.BLUE + "______________________________________________________________________________________________")
         print(Fore.BLUE + ".___ _______    _____________________________     __________________     _____    _______ ")
         print(Fore.BLUE + "|   |\      \  /   _____/\_   _____/\_   ___ \   /   _____/\_   ___ \   /  _  \   \      \\")
         print(
-                    Fore.BLUE + "|   |/   |   \ \_____  \  |    __)_ /    \  \/   \_____  \ /    \  \/  /  /_\  \  /   |   \\")
+                Fore.BLUE + "|   |/   |   \ \_____  \  |    __)_ /    \  \/   \_____  \ /    \  \/  /  /_\  \  /   |   \\")
         print(
-                    Fore.BLUE + "|   /    |    \/        \ |        \\\     \____  /        \\\     \____/    |    \/    |    \\")
+                Fore.BLUE + "|   /    |    \/        \ |        \\\     \____  /        \\\     \____/    |    \/    |    \\")
         print(
-                    Fore.BLUE + "|___\____|__  /_______  //_______  / \______  / /_______  / \______  /\____|__  /\____|__  /")
+                Fore.BLUE + "|___\____|__  /_______  //_______  / \______  / /_______  / \______  /\____|__  /\____|__  /")
         print(Fore.BLUE + "            \/        \/         \/         \/          \/         \/         \/         \/")
         print(
-                    Fore.BLUE + "*************************** CREATED BY https://invasive-security.de ***************************")
+                Fore.BLUE + "*************************** CREATED BY https://invasive-security.de ***************************")
         print(
-                    Fore.BLUE + "_______________________________________________________________________________________________")
+                Fore.BLUE + "_______________________________________________________________________________________________")
 
         # Define Target
         target = input(Fore.GREEN + "[!] Enter Target IP: ")
