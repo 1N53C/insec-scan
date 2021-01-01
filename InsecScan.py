@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
 import os
-import socket
-import sys
-import colorama
 from colorama import Fore, Style, init
 
 init(autoreset=True)
@@ -19,21 +16,32 @@ def create_folder():
         print(Fore.GREEN + "[+] Folder with the name " + folder_name + " created!\n")
         return str(folder_name)
     else:
-        print(Fore.MAGENTA + "[-] No folder created")
+        print(Fore.RED + "[-] No folder created\n")
 
 def nmap(_target, folder_name):
     print(Fore.RED + "nmap -sC -sV " + _target)
-    os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + _target + " " + _target)
+    if folder_name:
+        os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + _target + " " + _target)
+    else:
+        os.system("nmap -sC -sV -o " + "nmap_" + _target + " " + _target)
 
 
 def dirb(_target, folder_name, ssl):
     file_location = dict_file()
-    if ssl == "y" or ssl == "Y":
-        print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
-        os.system("dirb https://" + _target + " " + file_location + "> " + folder_name + "/dirb_" + _target)
-    elif ssl == "n" or ssl == "N":
-        print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
-        os.system("dirb http://" + _target + " " + file_location)
+    if folder_name:
+        if ssl == "y" or ssl == "Y":
+            print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
+            os.system("dirb https://" + _target + " " + file_location + "> " + folder_name + "/dirb_" + _target)
+        elif ssl == "n" or ssl == "N":
+            print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
+            os.system("dirb http://" + _target + " " + file_location + "> " + folder_name + "/dirb_" + _target)
+    else:
+        if ssl == "y" or ssl == "Y":
+            print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
+            os.system("dirb https://" + _target + " " + file_location + "> " + "dirb_" + _target)
+        elif ssl == "n" or ssl == "N":
+            print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
+            os.system("dirb http://" + _target + " " + file_location)
 
 
 def check_ssl():
