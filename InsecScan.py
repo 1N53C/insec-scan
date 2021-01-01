@@ -26,15 +26,24 @@ def nmap(_target, folder_name):
     os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + _target + " " + _target)
 
 
-def dirb(_target, folder_name):
+def dirb(_target, folder_name, ssl):
     file_location = dict_file()
-    ssl = input(Fore.RED + "Run against SSL? (y/n): ")
     if ssl == "y" or ssl == "Y":
         print(Fore.GREEN + "Running dirb https://" + _target + " " + file_location)
-        os.system("dirb https://" + _target + " " + file_location > dirb/ + folder_name)
+        os.system("dirb https://" + _target + " " + file_location + "> " + folder_name + "/dirb_" + _target)
     elif ssl == "n" or ssl == "N":
         print(Fore.GREEN + "Running dirb http://" + _target + " " + file_location)
         os.system("dirb http://" + _target + " " + file_location)
+
+
+def check_ssl():
+    ssl = input(Fore.RED + "Run against SSL? (y/n): ")
+    return str(ssl)
+
+
+def nikto(_target, folder_name):
+    exit()
+
 
 def dict_file():
     file_location = input(Fore.RED + "Please add path to dictionary file (Example: /usr/share/wordlists/dirb/common.txt " )
@@ -56,6 +65,7 @@ def main():
 
         # Define Target
         _target = input(Fore.GREEN + "[!] Enter Target IP: ")
+        ssl = check_ssl()
 
         folder_name = create_folder()
 
@@ -74,13 +84,14 @@ def main():
             nmap(_target, folder_name)
             inp = False
         elif inp == "2":
-            dirb(_target, folder_name)
+            dirb(_target, folder_name, ssl)
             inp = False
         elif inp == "3":
             print("NIKTO")
             inp = False
         elif inp == "4":
-            print("ALL")
+            nmap(_target, folder_name)
+            dirb(_target, folder_name)
             inp = False
         elif inp == "5":
             print("EXIT")
