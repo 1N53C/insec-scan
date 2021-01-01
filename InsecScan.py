@@ -5,7 +5,7 @@ from colorama import Fore, Style, init
 
 init(autoreset=True)
 
-# Gobals
+# Globals
 target = ""
 inp = True
 
