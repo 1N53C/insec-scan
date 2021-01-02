@@ -40,9 +40,9 @@ def dict_file():
 def nmap(target, folder_name):
     print(Fore.RED + "nmap -sC -sV " + target)
     if folder_name:
-        os.system("nmap -sC -sV -o " + folder_name + "/nmap_" + target + " " + target)
+        os.system("sudo nmap -sC -sV -o " + folder_name + "/nmap_" + target + " " + target)
     else:
-        os.system("nmap -sC -sV -o " + "nmap_" + target + " " + target)
+        os.system("sudo nmap -sC -sV -o " + "nmap_" + target + " " + target)
 
 
 def dirb(target, folder_name, ssl):
@@ -99,7 +99,7 @@ def main():
 
         folder_name = create_folder()
 
-        print(Fore.RED + "Choose your Scan Type...")
+        print(Fore.MAGENTA + "Choose your Scan Type...")
         print(Fore.YELLOW + "=================================")
         print(Fore.YELLOW + "1. NMAP")
         print(Fore.YELLOW + "2. DIRB")
