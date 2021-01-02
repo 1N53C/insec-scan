@@ -20,6 +20,7 @@ def main():
         banner.banner()
         # Define Target
         target = input(Fore.GREEN + "[!] Enter Target IP: ")
+        file_location = h.dict_file()
         ssl = h.check_ssl()
 
         folder_name = h.create_folder()
@@ -39,7 +40,7 @@ def main():
             scan.nmap(target, folder_name)
             inp = False
         elif inp == "2":
-            scan.dirb(target, folder_name, ssl)
+            scan.dirb(target, folder_name, ssl, file_location)
             inp = False
         elif inp == "3":
             scan.nikto(target, folder_name)
@@ -47,7 +48,7 @@ def main():
         elif inp == "4":
             t1 = threading.Thread(target=scan.nmap, args=(target, folder_name))
             t1.start()
-            t2 = threading.Thread(target=scan.dirb, args=(target, folder_name, ssl))
+            t2 = threading.Thread(target=scan.dirb, args=[target, folder_name, ssl, file_location])
             t2.start()
             t3 = threading.Thread(target=scan.nikto, args=(target, folder_name))
             t3.start()
