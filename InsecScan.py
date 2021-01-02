@@ -50,26 +50,26 @@ def dirb(target, folder_name, ssl):
     if folder_name:
         if ssl == "y" or ssl == "Y":
             print(Fore.GREEN + "Running dirb https://" + target + " " + file_location)
-            os.system("dirb https://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
+            os.system("sudo dirb https://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
         elif ssl == "n" or ssl == "N":
             print(Fore.GREEN + "Running dirb http://" + target + " " + file_location)
-            os.system("dirb http://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
+            os.system("sudo dirb http://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
     else:
         if ssl == "y" or ssl == "Y":
             print(Fore.GREEN + "Running dirb https://" + target + " " + file_location)
-            os.system("dirb https://" + target + " " + file_location + "> " + "dirb_" + target)
+            os.system("sudo dirb https://" + target + " " + file_location + "> " + "dirb_" + target)
         elif ssl == "n" or ssl == "N":
             print(Fore.GREEN + "Running dirb http://" + target + " " + file_location)
-            os.system("dirb http://" + target + " " + file_location)
+            os.system("sudo dirb http://" + target + " " + file_location)
 
 
 def nikto(target, folder_name):
     if folder_name:
         print(Fore.GREEN + "Running nikto")
-        os.system("nikto -h " + target + " --output " + folder_name + "/nikto_" + target + ".txt")
+        os.system("sudo nikto -h " + target + " --output " + folder_name + "/nikto_" + target + ".txt")
     else:
         print(Fore.GREEN + "Running nikto")
-        os.system("nikto -h " + target + " --output nikto_" + target + ".txt")
+        os.system("sudo nikto -h " + target + " --output nikto_" + target + ".txt")
 
 
 # Main Function
