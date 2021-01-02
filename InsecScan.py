@@ -50,10 +50,10 @@ def dirb(target, folder_name, ssl):
     if folder_name:
         if ssl == "y" or ssl == "Y":
             print(Fore.GREEN + "Running dirb https://" + target + " " + file_location)
-            os.system("sudo dirb https://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
+            os.system("sudo dirb https://" + target + " " + file_location + "-o " + folder_name + "/dirb_" + target)
         elif ssl == "n" or ssl == "N":
             print(Fore.GREEN + "Running dirb http://" + target + " " + file_location)
-            os.system("sudo dirb http://" + target + " " + file_location + "> " + folder_name + "/dirb_" + target)
+            os.system("sudo dirb http://" + target + " " + file_location + "-o " + folder_name + "/dirb_" + target)
     else:
         if ssl == "y" or ssl == "Y":
             print(Fore.GREEN + "Running dirb https://" + target + " " + file_location)
