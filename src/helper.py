@@ -1,7 +1,7 @@
 from colorama import Fore, init
 import os
 
-
+# Create a Folder to safe the output files
 def create_folder():
     folder_create = input(Fore.GREEN + "[?] Should I create a folder for you to save the outout? (y/n) ")
     if folder_create == "y" or folder_create == "Y":
@@ -12,13 +12,16 @@ def create_folder():
     else:
         print(Fore.RED + "[-] No folder created\n")
 
-
+# Check if we have to run the scans against SSL
 def check_ssl():
     ssl = input(Fore.GREEN + "[?] Run against SSL? (y/n): ")
     return str(ssl)
 
-
+# Specify the path to the dirb dictionary file
 def dict_file():
-    file_location = input(
-        Fore.RED + "Please add path to dictionary file (Example: /usr/share/wordlists/dirb/common.txt ")
+    location = input(Fore.RED + "Specify path to dictionary file or hit Enter for default: /usr/share/wordlists/dirb/common.txt ")
+    if location:
+        file_location = location
+    else:
+        file_location = "/usr/share/wordlists/dirb/common.txt"
     return str(file_location)
