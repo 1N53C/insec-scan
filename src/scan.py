@@ -1,6 +1,5 @@
 import os
-import helper as h
-from colorama import Fore, init
+from colorama import Fore
 
 
 def nmap(target, folder_name):
