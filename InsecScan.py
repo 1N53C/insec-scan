@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 import os
+import socket
+import threading
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -120,9 +122,18 @@ def main():
             nikto(target, folder_name)
             inp = False
         elif inp == "4":
+            t1 = threading.Thread(target=nmap, args=(target,folder_name))
+            t1.start()
+            t2 = threading.Thread(target=dirb, args=(target, folder_name, ssl))
+            t2.start()
+            t3 = threading.Thread(target=nikto, args=(target, folder_name))
+            t3.start()
+            '''
             nmap(target, folder_name)
             dirb(target, folder_name, ssl)
             nikto(target, folder_name)
+            '''
+
             inp = False
         elif inp == "5":
             print("EXIT")
