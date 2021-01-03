@@ -25,6 +25,8 @@ def main():
     inp = menu.display_menu()
 
     print("Chosen Selection: " + inp)
+
+    # Start Scan
     start.start_scan(file_location, folder_name, ssl, target, inp)
 
 main()
