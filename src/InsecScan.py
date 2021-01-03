@@ -8,31 +8,23 @@ from colorama import Fore, init
 
 init(autoreset=True)
 
-# Globals
-target = ""
-inp = True
-
-
 # Main Function
 def main():
     # type: () -> object
-    global inp
-    while inp:
 
-        # Display Banner
-        banner.banner()
+    # Display Banner
+    banner.banner()
 
-        # Define Target
-        target = input(Fore.GREEN + "[!] Enter Target IP: ")
+    # Define Target
+    target = input(Fore.GREEN + "[!] Enter Target IP: ")
 
-        # Call Helper and Menu Functions
-        file_location = h.dict_file()
-        ssl = h.check_ssl()
-        folder_name = h.create_folder()
-        inp = menu.display_menu()
+    # Call Helper and Menu Functions
+    file_location = h.dict_file()
+    ssl = h.check_ssl()
+    folder_name = h.create_folder()
+    inp = menu.display_menu()
 
-        print("Chosen Selection: " + inp)
-        start.start_scan(file_location, folder_name, ssl, target, inp)
-        inp = False
+    print("Chosen Selection: " + inp)
+    start.start_scan(file_location, folder_name, ssl, target, inp)
 
 main()
