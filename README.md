@@ -14,7 +14,7 @@ It automates the use of three wellknown pentesting tools:
 2. dirb
 3. nikto
 
-Insec Scan guides you through the process of scanning and saves your outout to a folder that 
+Insec Scan guides you through the process of scanning and saves your output to a folder that 
 will be created for you if you like.
 
 
