@@ -3,11 +3,11 @@ import os
 
 # Create a Folder to safe the output files
 def create_folder():
-    folder_create = input(Fore.GREEN + "[?] Should I create a folder for you to save the output? (y/n) ")
+    folder_create = input(Fore.GREEN + "[?] Create a folder to save the output? (y/n) ")
     if folder_create == "y" or folder_create == "Y":
-        folder_name = input(Fore.GREEN + "[!] Please enter the name of the folder and I will create it for you: ")
+        folder_name = input(Fore.GREEN + "[!] Enter the name of the folder and I will create it for you: ")
         os.system("sudo mkdir " + folder_name)
-        print(Fore.GREEN + "[+] Folder with the name " + folder_name + " created!\n")
+        print(Fore.GREEN + "[+] Folder with the name '" + folder_name + "' created!\n")
         return str(folder_name)
     else:
         print(Fore.RED + "[-] No folder created\n")
