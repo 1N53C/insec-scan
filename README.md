@@ -5,6 +5,17 @@
 
 ![Screenshot](https://github.com/1N53C/insec-scan/blob/master/InSecScan.png)
 
+## About Insec Scan
+Insec Scan is a Python Script that allows you to simplify enumeration of
+Websites.
+
+It automates the use of three wellknown pentesting tools:
+1. nmap
+2. dirb
+3. nikto
+
+Insec Scan guides you through the process of scanning and saves your outout to a folder that 
+will be created for you if you like.
 
 
 ## Installation
@@ -26,3 +37,5 @@ python3 InsecScan.py
 
 1. README.md
 2. Logic for run ALL
+3. enable autocomplete (readline module)
+4. specify different nmap scans
