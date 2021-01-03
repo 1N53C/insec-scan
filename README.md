@@ -13,7 +13,7 @@ git clone https://github.com/1N53C/insec-scan.git
 pip install -r requirements.txt
 ```
 
-## Run the Scriot
+## Run the Script
 
 ```
 python3 InsecScan.py
