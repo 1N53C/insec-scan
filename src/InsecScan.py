@@ -3,6 +3,7 @@
 import helper as h
 import scan as scan
 import banner as banner
+import menu as menu
 import threading
 from colorama import Fore, init
 
@@ -15,27 +16,23 @@ inp = True
 
 # Main Function
 def main():
+    # type: () -> object
     global inp
     while inp:
+
+        # Display Banner
         banner.banner()
+
         # Define Target
         target = input(Fore.GREEN + "[!] Enter Target IP: ")
+
+        # Call Helper and Menu Functions
         file_location = h.dict_file()
         ssl = h.check_ssl()
-
         folder_name = h.create_folder()
+        inp = menu.display_menu()
 
-        print(Fore.MAGENTA + "Choose your Scan Type...")
-        print(Fore.YELLOW + "=================================")
-        print(Fore.YELLOW + "1. NMAP")
-        print(Fore.YELLOW + "2. DIRB")
-        print(Fore.YELLOW + "3. NIKTO")
-        print(Fore.YELLOW + "4. Let´s run them ALL")
-        print(Fore.YELLOW + "5. EXIT")
-        print(Fore.YELLOW + "=================================\n")
-
-        inp = input(Fore.GREEN + "[!] Enter the number of selection (1,2,3,4,5): ")
-
+        print("Chosen Selection: " + inp)
         if inp == "1":
             scan.nmap(target, folder_name)
             inp = False
