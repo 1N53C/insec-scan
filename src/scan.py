@@ -11,7 +11,6 @@ def nmap(target, folder_name):
 
 
 def dirb(target, folder_name, ssl, file_location):
-    #file_location = h.dict_file()
     if folder_name:
         if ssl == "y" or ssl == "Y":
             print(Fore.GREEN + "Running dirb https://" + target + " " + file_location)
