@@ -3,7 +3,6 @@ import scan
 
 
 def start_scan(file_location, folder_name, ssl, target, inp):
-
     if inp == "1":
         scan.nmap(target, folder_name)
         inp = False
