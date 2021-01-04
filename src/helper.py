@@ -19,7 +19,7 @@ def check_ssl():
 
 # Specify the path to the dirb dictionary file
 def dict_file():
-    location = input(Fore.GREEN + "[!] Specify path to dictionary file or hit Enter for default: /usr/share/wordlists/dirb/common.txt ")
+    location = input(Fore.GREEN + "[!] Specify path to dictionary file or hit Enter for default: [/usr/share/wordlists/dirb/common.txt] ")
     if location:
         file_location = location
     else:
