@@ -36,6 +36,6 @@ python3 InsecScan.py
 ## TODO
 
 1. README.md
-2. Logic for run ALL
+2. ~~Logic for run ALL~~
 3. enable autocomplete (readline module)
 4. specify different nmap scans
