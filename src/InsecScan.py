@@ -8,10 +8,9 @@ from colorama import Fore, init
 
 init(autoreset=True)
 
+
 # Main Function
 def main():
-    # type: () -> object
-
     # Display Banner
     banner.banner()
 
@@ -26,5 +25,6 @@ def main():
 
     # Start Scan
     start.start_scan(file_location, folder_name, ssl, target, inp)
+
 
 main()
